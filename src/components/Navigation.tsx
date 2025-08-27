@@ -25,7 +25,7 @@ const Navigation = () => {
           {/* Logo */}
            <Link to="/" className="flex items-center">
             <img 
-              src="/assets/ArtifyLabs LOGO_Black_ PNG.png" 
+              src="public\logo\logo.png" 
               alt="ArtifyLabs" 
               className="h-20 w-auto"
             />
