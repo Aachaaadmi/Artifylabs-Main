@@ -140,20 +140,20 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "Sarah Johnson",
-                company: "TechStart Inc.",
+                name: " Nikunj Sharma",
+                company: " AI Startup",
                 rating: 5,
                 testimonial: "ARTIFYLABS transformed our marketing completely. The AI-generated content performs 3x better than our previous campaigns."
               },
               {
-                name: "Mike Chen",
-                company: "Growth Corp",
+                name: "Piyush ",
+                company: "Decor Studio",
                 rating: 5,
                 testimonial: "Incredible results in just 30 days. Their AI influencer strategy helped us reach millions of potential customers."
               },
               {
-                name: "Emily Rodriguez",
-                company: "D2C Brand",
+                name: "Shivam Verma",
+                company: "Ed-tech Startup",
                 rating: 5,
                 testimonial: "The quality and speed of their video production is unmatched. We've seen 400% increase in engagement."
               }

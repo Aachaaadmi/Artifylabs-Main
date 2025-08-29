@@ -1,116 +1,67 @@
 import { Helmet } from 'react-helmet-async';
-import { Play, Filter, ExternalLink, Video, Users, Palette, TrendingUp, Briefcase, Target } from 'lucide-react';
+import { Play, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
 
 const Portfolio = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
-  
-  const filters = ['All', 'Video', 'Reels', 'Influencer', 'Creatives', 'Strategy'];
   
   const projects = [
     {
       id: 1,
       title: "D2C Skincare Launch",
       subtitle: "AI Reels & Ads",
-      category: "Reels",
-      brief: "Launch a new skincare brand targeting Gen Z consumers with authentic, educational content.",
-      approach: "Created AI-generated reels showcasing real results, user testimonials, and ingredient education using trending audio and visual styles.",
-      deliverables: ["15 AI-generated reels", "5 paid ad variations", "Content calendar", "Hashtag strategy"],
-      results: [
-        { metric: "Reach", value: "2.8M views" },
-        { metric: "Engagement", value: "+340%" },
-        { metric: "Conversions", value: "+180%" },
-        { metric: "ROAS", value: "4.2x" }
-      ],
-      image: "bg-gradient-to-br from-pink-500 to-rose-600"
+      category: "Influencer",
+      brief: "Showcase of AI-powered product launch reels & paid ads.",
+      video: "/videos/project1.mp4",
+      fallbackImage: "bg-gradient-to-br from-pink-500 to-rose-600"
     },
     {
       id: 2,
-      title: "Fintech App Growth",
+      title: "Electronic Brand Growth",
       subtitle: "Explainers + Paid Social",
       category: "Video",
-      brief: "Increase app downloads and user engagement for a fintech startup targeting millennials.",
-      approach: "Developed AI-powered explainer videos and social campaigns focusing on financial literacy and app benefits.",
-      deliverables: ["3 explainer videos", "10 social ad creatives", "Landing page videos", "Email sequences"],
-      results: [
-        { metric: "App Downloads", value: "+250%" },
-        { metric: "User Retention", value: "+120%" },
-        { metric: "CPA Reduction", value: "45%" },
-        { metric: "LTV Increase", value: "+190%" }
-      ],
-      image: "bg-gradient-to-br from-blue-500 to-indigo-600"
+      brief: "Engaging product explainers + performance-driven paid ads.",
+      video: "/videos/project2.mp4",
+      fallbackImage: "bg-gradient-to-br from-blue-500 to-indigo-600"
     },
     {
       id: 3,
-      title: "EduTech Enrollment",
+      title: "Jewelry Brand Enrollment",
       subtitle: "Virtual Influencer Funnel",
       category: "Influencer",
-      brief: "Drive course enrollments using a virtual AI influencer to build trust and authority.",
-      approach: "Created a virtual AI influencer persona that shared educational content and student success stories across social platforms.",
-      deliverables: ["AI influencer character", "20 posts/month", "Story campaigns", "Live Q&A sessions"],
-      results: [
-        { metric: "Enrollments", value: "+320%" },
-        { metric: "Engagement Rate", value: "8.2%" },
-        { metric: "Course Completion", value: "+85%" },
-        { metric: "Referrals", value: "+150%" }
-      ],
-      image: "bg-gradient-to-br from-green-500 to-emerald-600"
+      brief: "AI virtual influencer campaign for storytelling + sales funnel.",
+      video: "/videos/project3.mp4",
+      fallbackImage: "bg-gradient-to-br from-green-500 to-emerald-600"
     },
     {
       id: 4,
-      title: "Fitness Wearables",
+      title: "Footwear Brand Awareness",
       subtitle: "UGC-style Ads at Scale",
-      category: "Video",
-      brief: "Create authentic user-generated content style advertisements for fitness wearables.",
-      approach: "Used AI to generate realistic user testimonials and workout scenarios, maintaining authenticity while scaling production.",
-      deliverables: ["25 UGC-style videos", "A/B test variants", "Platform adaptations", "Performance tracking"],
-      results: [
-        { metric: "CTR Improvement", value: "+280%" },
-        { metric: "Conversion Rate", value: "+165%" },
-        { metric: "Ad Spend Efficiency", value: "+220%" },
-        { metric: "Brand Trust", value: "+140%" }
-      ],
-      image: "bg-gradient-to-br from-orange-500 to-red-600"
+      category: "Ads",
+      brief: "UGC-inspired AI reels to boost awareness and conversions.",
+      video: "/videos/project4.mp4",
+      fallbackImage: "bg-gradient-to-br from-orange-500 to-red-600"
     },
     {
       id: 5,
-      title: "SaaS Feature Launch",
+      title: "Recipe Cooking Series",
       subtitle: "Motion Explainer",
       category: "Video",
-      brief: "Explain complex software features through engaging motion graphics and AI voiceover.",
-      approach: "Developed animated explainer videos with AI-generated scripts and voiceovers, breaking down complex features into digestible content.",
-      deliverables: ["5 motion explainers", "Interactive demos", "Help center videos", "Social cutdowns"],
-      results: [
-        { metric: "Feature Adoption", value: "+380%" },
-        { metric: "Support Tickets", value: "-65%" },
-        { metric: "User Satisfaction", value: "+200%" },
-        { metric: "Trial Conversions", value: "+145%" }
-      ],
-      image: "bg-gradient-to-br from-purple-500 to-violet-600"
+      brief: "Motion-style explainers showcasing cooking recipes.",
+      video: "/videos/project5.mp4",
+      fallbackImage: "bg-gradient-to-br from-purple-500 to-violet-600"
     },
     {
       id: 6,
-      title: "Restaurant Cloud Kitchen",
+      title: "Quick Commerce Reels",
       subtitle: "Local Reels",
       category: "Reels",
-      brief: "Drive local food orders through location-specific, appetite-appealing reel content.",
-      approach: "Created AI-generated food photography and recipe reels optimized for local search and delivery platforms.",
-      deliverables: ["30 food reels/month", "Local SEO content", "Menu highlights", "Seasonal campaigns"],
-      results: [
-        { metric: "Order Volume", value: "+290%" },
-        { metric: "Local Reach", value: "+350%" },
-        { metric: "Customer Acquisition", value: "+175%" },
-        { metric: "Average Order Value", value: "+85%" }
-      ],
-      image: "bg-gradient-to-br from-yellow-500 to-orange-600"
+      brief: "Location-based AI reels to drive food delivery conversions.",
+      video: "/videos/project6.mp4",
+      fallbackImage: "bg-gradient-to-br from-yellow-500 to-orange-600"
     }
   ];
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
-
+  
   return (
     <>
       <Helmet>
@@ -138,43 +89,30 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Filter Bar */}
-      <section className="py-8 bg-surface/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-3">
-            {filters.map((filter) => (
-              <button
-                key={filter}
-                onClick={() => setActiveFilter(filter)}
-                className={`px-6 py-3 rounded-full font-body font-medium transition-all ${
-                  activeFilter === filter
-                    ? 'gradient-primary text-white shadow-lg'
-                    : 'glass-strong hover:bg-white/20 text-foreground/80 hover:text-foreground'
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
+     {/* Portfolio Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {filteredProjects.map((project) => (
+            {projects.map((project) => (
               <div key={project.id} className="glass-strong rounded-3xl overflow-hidden hover-lift">
                 {/* Project Visual */}
-                <div className={`relative h-56 ${project.image} flex items-center justify-center`}>
-                  <div className="text-white text-center">
-                    <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                      <Play className="w-8 h-8" />
+                <div className={`relative ${project.fallbackImage ? project.fallbackImage : ''} flex items-center justify-center`}>
+                  {project.video ? (
+                    <video
+                      src={project.video}
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-auto rounded-lg shadow-lg"
+                      style={{ maxHeight: 400 }} // Optional: limit max height for layout consistency
+                    />
+                  ) : (
+                    <div className="w-full h-80 flex items-center justify-center text-white text-2xl font-bold opacity-70">
+                      No preview available
                     </div>
-                    <div className="font-body text-sm opacity-80">
-                      Reel/GIF Placeholder
-                    </div>
-                  </div>
+                  )}
                   <div className="absolute top-4 left-4 px-3 py-1 bg-black/30 backdrop-blur-sm rounded-full text-white text-xs font-medium">
                     {project.category}
                   </div>
@@ -189,7 +127,7 @@ const Portfolio = () => {
                     {project.subtitle}
                   </p>
 
-                   {/* Brief */}
+                  {/* Brief */}
                   <div>
                     <h4 className="font-heading font-semibold text-sm text-primary mb-2 flex items-center">
                       <Briefcase className="w-4 h-4 mr-2" />
@@ -200,7 +138,6 @@ const Portfolio = () => {
                     </p>
                   </div>
 
-        
                 </div>
               </div>
             ))}
